@@ -196,7 +196,7 @@ See [URL validation](#url-validation) and
 
 ```zsh
 tox --parallel       # Test all Python versions
-tox -e py311         # Test specific Python version
+tox -e py310         # Test specific Python version
 ruff format .        # Format code
 ```
 
