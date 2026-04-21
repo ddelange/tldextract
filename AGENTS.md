@@ -4,18 +4,29 @@ See [README.md](README.md) for contributor setup.
 
 ## Tests
 
-Before wrapping up a change, run the relevant validation commands from the
-README:
+While iterating on a change, prefer the smallest test invocation that exercises
+the behavior you are working on, such as a specific test file or pytest `-k`
+selector:
 
 ```zsh
-tox --parallel       # Test all Python versions
-tox -e py310         # Test specific Python version
-ruff format .        # Format code
+tox -e py310 -- tests/cli_test.py
+tox -e py310 -- -k private
 ```
 
-Prefer the minimum Python version while iterating, `tox -e py310`. Then use
-broader validation when the scope of the change warrants it.
+Before wrapping up any code change, always run the required validation baseline:
 
-Most `tox` environments forward to `pytest`. To focus one environment's tests,
-use a `pytest` selector such as `tox -e py310 -- -k private`, or run a specific
-test file such as `tox -e py310 -- tests/cli_test.py`.
+```zsh
+tox -e py310         # Fastest full pytest run while iterating
+tox -e lint          # Lint (ruff check)
+tox -e typecheck     # Type-check (mypy)
+ruff format .        # Auto-format code
+```
+
+Run broader validation when the scope warrants it:
+
+```zsh
+tox --parallel       # Run everything: pytest on all Pythons + codestyle + lint + typecheck
+```
+
+The `py*` and `pypy*` environments forward to `pytest`; `codestyle`, `lint`, and
+`typecheck` do not.
