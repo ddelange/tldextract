@@ -45,6 +45,13 @@ release = [
     "build",
     "twine",
 ]
+test = [
+    "pytest",
+    "pytest-mock",
+    "responses",
+    "sybil[pytest]",
+    "syrupy",
+]
 testing = [
     "mypy",
     "pytest",
