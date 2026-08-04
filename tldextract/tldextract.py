@@ -66,6 +66,10 @@ class ExtractResult:
     They are the split, non-overlapping hostname components of the input URL.
     They can be used to rebuild the original URL's hostname.
 
+    The extracted strings generally preserve the input's casing and Unicode or
+    ASCII-compatible encoding (ACE, commonly called Punycode). They are not
+    normalized for comparison or validated as real hostnames.
+
     Beyond the first 3 fields, the class contains metadata fields, like a flag
     that indicates if the input URL's suffix is from a private domain.
     """

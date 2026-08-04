@@ -154,6 +154,20 @@ ExtractResult(subdomain='waiterrant', domain='blogspot', suffix='com', is_privat
 To treat them as suffixes instead, see
 [How to treat private domains as suffixes](#how-to-treat-private-domains-as-suffixes).
 
+### Hostname representation
+
+`tldextract` identifies public suffix boundaries but does not validate or
+canonicalize hostnames. Returned strings can retain the input's casing and its
+Unicode or ASCII-compatible encoding (ACE, commonly called Punycode).
+Equivalent IDNA hostnames can therefore produce textually different values even
+when `tldextract` identifies the same suffix boundary.
+
+Before using `suffix`, `fqdn`, or joined-domain properties in equality checks,
+allowlists, blocklists, or other security decisions, validate and normalize
+both hostnames to the same IDNA representation. IDNA defines label equivalence
+in terms of A-labels. See
+[RFC 5890, section 2.3.2.4](https://www.rfc-editor.org/rfc/rfc5890.html#section-2.3.2.4).
+
 ### Caching behavior
 
 By default, `tldextract` fetches the latest Public Suffix List on first use and
