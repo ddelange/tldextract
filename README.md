@@ -154,6 +154,13 @@ ExtractResult(subdomain='waiterrant', domain='blogspot', suffix='com', is_privat
 To treat them as suffixes instead, see
 [How to treat private domains as suffixes](#how-to-treat-private-domains-as-suffixes).
 
+### Default behavior with unlisted suffixes
+
+Unlike the [formal PSL algorithm](https://github.com/publicsuffix/list/wiki/Format#algorithm),
+`tldextract` does not apply the implicit `*` rule when no suffix matches. For an
+unlisted final label, `suffix` remains empty so callers can distinguish configured
+public suffixes from unknown, invalid, or internal hostnames.
+
 ### Hostname representation
 
 `tldextract` identifies public suffix boundaries but does not validate or
