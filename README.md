@@ -40,7 +40,7 @@ pip install tldextract
 
 ```python
 no_fetch_extract = tldextract.TLDExtract(suffix_list_urls=())
-no_fetch_extract('http://www.google.com')
+no_fetch_extract("http://www.google.com")
 ```
 
 ### How to set a custom cache location
@@ -54,7 +54,7 @@ export TLDEXTRACT_CACHE="/path/to/cache"
 Or in code:
 
 ```python
-custom_cache_extract = tldextract.TLDExtract(cache_dir='/path/to/cache/')
+custom_cache_extract = tldextract.TLDExtract(cache_dir="/path/to/cache/")
 ```
 
 ### How to update TLD definitions
@@ -75,7 +75,7 @@ rm -rf $HOME/.cache/python-tldextract
 
 ```python
 extract = tldextract.TLDExtract(include_psl_private_domains=True)
-extract('waiterrant.blogspot.com')
+extract("waiterrant.blogspot.com")
 # ExtractResult(subdomain='', domain='waiterrant', suffix='blogspot.com', is_private=True)
 ```
 
@@ -84,22 +84,23 @@ extract('waiterrant.blogspot.com')
 ```python
 extract = tldextract.TLDExtract(
     suffix_list_urls=["file:///path/to/your/list.dat"],
-    cache_dir='/path/to/cache/',
-    fallback_to_snapshot=False)
+    cache_dir="/path/to/cache/",
+    fallback_to_snapshot=False,
+)
 ```
 
 ### How to use a remote suffix list
 
 ```python
 extract = tldextract.TLDExtract(
-    suffix_list_urls=["https://myserver.com/suffix-list.dat"])
+    suffix_list_urls=["https://myserver.com/suffix-list.dat"]
+)
 ```
 
 ### How to add extra suffixes
 
 ```python
-extract = tldextract.TLDExtract(
-    extra_suffixes=["foo", "bar.baz"])
+extract = tldextract.TLDExtract(extra_suffixes=["foo", "bar.baz"])
 ```
 
 ### How to validate URLs before extraction
