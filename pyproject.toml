@@ -40,7 +40,14 @@ dependencies = [
     "filelock>=3.0.8",
 ]
 
-[project.optional-dependencies]
+[dependency-groups]
+dev = [
+    {include-group = "lint"},
+    {include-group = "typecheck"},
+    "tox",
+    "tox-uv",
+]
+lint = ["ruff"]
 release = [
     "build",
     "twine",
@@ -52,16 +59,9 @@ test = [
     "sybil[pytest]",
     "syrupy",
 ]
-testing = [
+typecheck = [
+    {include-group = "test"},
     "mypy",
-    "pytest",
-    "pytest-mock",
-    "responses",
-    "ruff",
-    "sybil[pytest]",
-    "syrupy",
-    "tox",
-    "tox-uv",
     "types-filelock",
     "types-requests",
 ]

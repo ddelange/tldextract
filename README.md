@@ -189,16 +189,18 @@ See [URL validation](#url-validation) and
 
 ### Setting up
 
-1. `git clone` this repository.
-2. Change into the new directory.
-3. `pip install --upgrade --editable '.[testing]'`
+1. [Install uv](https://docs.astral.sh/uv/getting-started/installation/).
+2. `git clone` this repository.
+3. Change into the new directory.
+4. `uv sync`
 
 ### Running tests
 
 ```zsh
-tox --parallel       # Test all Python versions
-tox -e py310         # Test specific Python version
-ruff format .        # Format code
+uv run pytest          # Fast local suite
+uv run tox -e py310    # Supported-version suite
+uv run tox --parallel  # Full matrix
+uv run ruff format .   # Format code
 ```
 
 ## History
